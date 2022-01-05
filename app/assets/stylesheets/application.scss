@@ -1,0 +1,8 @@
+$primary: #374EFB;
+$link: #374EFB;
+
+@import "bulma";
+
+.notification:not(:last-child) {
+  margin-bottom: 0;
+}
