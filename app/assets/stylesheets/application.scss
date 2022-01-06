@@ -1,8 +1,79 @@
+// change bulma default colors
 $primary: #374EFB;
 $link: #374EFB;
+$info: #374EFB;
 
 @import "bulma";
 
+/****** DEVISE ******/
+
+// remove gap between header and notifications
 .notification:not(:last-child) {
   margin-bottom: 0;
 }
+
+// add space after radio buttons
+input[type="radio"], input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+// logo on devise pages
+.userpage-logo {
+  padding-bottom: 0.75em;
+  width: 60%;
+}
+
+// add space above links on sign in and sign up pages
+.button.is-info.is-medium {
+  margin-bottom: 0.5em;
+}
+
+// card for devise pages
+.user-card {
+  background-color: white;
+  padding: 2em;
+  border-radius: 0.5em;
+}
+
+// white text above background
+.white-text {
+  color: white;
+}
+
+// center columns vertically on non-scrolling devise pages
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/****** BACKGROUND PICTURES ******/
+
+// add background to devise pages
+.background { 
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background.one {
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url('DT1.jpg');
+}
+.background.two {
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url('DT2.jpg');
+}
+.background.three {
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url('DT3.jpg');
+}
+.background.four {
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url('DT4.jpg');
+}
+.background.five {
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), image-url('DT5.jpg');
+}
+
+
+// remove scrollbar
+html {
+  overflow: hidden;
+}
+
