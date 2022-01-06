@@ -24,7 +24,9 @@
       </div>
     <% end %>
 
-    <%= render 'layouts/header' %>
+    <% unless devise_controller? %>
+      <%= render 'layouts/header' %>
+    <% end %>
 
     <%= yield %>
   </body>
