@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   # - RELATIONS
   has_many :posts
+  has_many :comments, as: :commentable
 end
