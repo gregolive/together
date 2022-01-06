@@ -74,8 +74,9 @@ input[type="radio"], input[type="checkbox"] {
   background-image: image-url('DT5.jpg');
 }
 
-// remove scrollbar
-html {
-  overflow: hidden;
+/****** POSTS ******/
+
+.tabs.is-toggle.is-fullwidth {
+  padding-top: 1em;
 }
 
