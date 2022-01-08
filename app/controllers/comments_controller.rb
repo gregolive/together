@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ destroy ]
+  before_action :set_comment, only: %i[ destroy edit update ]
   before_action :set_post
 
   def create
@@ -11,6 +11,21 @@ class CommentsController < ApplicationController
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to post_path(@post) }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -28,7 +43,7 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @comment = @post.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def set_post
