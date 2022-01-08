@@ -76,7 +76,13 @@ input[type="radio"], input[type="checkbox"] {
 
 /****** POSTS ******/
 
-.tabs.is-toggle.is-fullwidth {
-  padding-top: 1em;
+// add spacing around post elements
+.post-body {
+  padding: 1em 0;
 }
-
+.post-info {
+  padding: 1em 0 0.5em 0;
+}
+.post-comments {
+  padding-top: 2em;
+}

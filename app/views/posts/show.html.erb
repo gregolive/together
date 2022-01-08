@@ -1,14 +1,103 @@
-<p id="notice"><%= notice %></p>
+<div class="section">
+	<div class="container">
+		<div class="columns is-centered">
+			<div class="column is-half">
+        <div class="box spaced">
+          <article class="media">
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+              </figure>
+            </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
+            <div class="media-content">
+              <div class="content">
+                <strong><%= @post.user.name %></strong>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+                <p><small>
+                  <% if @post.created_at > 1.day.ago %>
+                    <%= time_ago_in_words(@post.created_at) %> ago
+                  <% else %>
+                    <%= @post.created_at.strftime("%B %d at %H:%M %p") %>
+                  <% end %>
+                </small></p>
+              </div>
+            </div>
+
+            <% if current_user == @post.user %>
+              <nav class="level">
+                <div class="level-right">
+                  <%= link_to edit_post_path(@post) , class: "level-item" do %>
+                    <span class="icon"><i class="fa fa-pencil-alt" aria-hidden="true"></i></span>
+                  <% end %>
+                  <%= link_to @post, method: :delete, data: { confirm: "Are you sure you want to delete this post?" } do %>
+                    <span class="icon"><i class="far fa-trash-alt" aria-hidden="true"></i></span>
+                  <% end %>
+                </div>
+              </nav>
+            <% end %>
+          </article>
+
+          <p class="post-body"><%= @post.body %></p>
+
+          <p class="post-info has-text-grey-dark"><small>
+            <%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'like' : 'likes'%> 
+            <%= @post.comments.count %> <%= (@post.comments.count) == 1 ? 'comment' : 'comments'%>
+          </p></small>
+
+          <div class="tabs is-toggle is-fullwidth">
+            <ul>
+              <li>
+                <a>
+                  <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                  <span>Like</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="icon"><i class="far fa-comment" aria-hidden="true"></i></span>
+                  <span>Comment</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <%= render 'comments/form' %>
+
+          <% if @post.comments.any? %>
+            <div class="post-comments">
+              <% @post.comments.each do |comment| %>
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-32x32">
+                      <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong><%= comment.user.name %></strong>
+                        <br>
+                        <%= comment.content %>
+                        <br>
+                        <small><a>Like</a> · <a>Reply</a> · <%= time_ago_in_words(comment.created_at) %> ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <% if current_user == comment.user %>
+                    <div class="level-right small-gap">
+                      <%= link_to [@post, comment], method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } do %>
+                        <span class="icon"><i class="far fa-trash-alt" aria-hidden="true"></i></span>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </article>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>

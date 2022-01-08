@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   # - RELATIONS
   has_many :posts
-  has_many :comments, as: :commentable
+  has_many :comments
   has_many :likes, as: :likeable
 end

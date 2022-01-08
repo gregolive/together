@@ -2,7 +2,7 @@
   <article class="media box">
     <figure class="media-left">
       <p class="image is-64x64">
-        <%= image_tag "blank-profile-picture.jpg", alt: "Blank pp", class:"is-rounded" %>
+        <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
       </p>
     </figure>
     <div class="media-content">
@@ -17,7 +17,7 @@
 
           <div class="media-left">
             <figure class="image is-48x48">
-              <%= image_tag "blank-profile-picture.jpg", alt: "Blank pp", class:"is-rounded" %>
+              <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
             </figure>
           </div>
 
@@ -32,14 +32,12 @@
                   <%= post.created_at.strftime("%B %d at %H:%M %p") %>
                 <% end %>
               </small></p>
-
-              <p><%= truncate post.body, length: 164 %></p>
             </div>
           </div>
 
           <% if current_user == post.user %>
             <nav class="level">
-              <div class="level-right is-mobile">
+              <div class="level-right">
                 <%= link_to edit_post_path(post) , class: "level-item" do %>
                   <span class="icon"><i class="fa fa-pencil-alt" aria-hidden="true"></i></span>
                 <% end %>
@@ -50,6 +48,14 @@
             </nav>
           <% end %>
         </article>
+
+        <p class="post-body"><%= truncate post.body, length: 164 %></p>
+
+        <p class="post-info has-text-grey-dark"><small>
+          <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'like' : 'likes'%> 
+          <%= post.comments.count %> <%= (post.comments.count) == 1 ? 'comment' : 'comments'%>
+        </p></small>
+          
         <div class="tabs is-toggle is-fullwidth">
           <ul>
             <li>
@@ -59,10 +65,10 @@
               </a>
             </li>
             <li>
-              <a>
+              <%= link_to post do %>
                 <span class="icon"><i class="far fa-comment" aria-hidden="true"></i></span>
                 <span>Comment</span>
-              </a>
+              <% end %>
             </li>
           </ul>
         </div>
