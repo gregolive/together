@@ -4,59 +4,7 @@
 			<div class="column is-half">
         <div class="box">
           <%= render 'post_info', post: @post %>
-
-          <% if @post.comments.any? %>
-            <div class="post-comments">
-              <% @post.comments.each do |comment| %>
-                <article class="media">
-                  <figure class="media-left">
-                    <p class="image is-32x32">
-                      <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
-                    </p>
-                  </figure>
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong><%= comment.user.name %></strong>
-                        <br>
-                        <%= comment.content %>
-                        <br>
-                      </p>
-                    </div>
-                    <small>
-                      <nav class="level is-mobile">
-                        <div class="level-left">
-                          <% if comment.user_likes(current_user) %>
-                            <%= link_to [@post, comment, comment.user_likes(current_user)], method: :delete, class: "level-item" do %>
-                              <span class="icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
-                              <%= comment.likes.count %> <%= (comment.likes.count) == 1 ? 'Like' : 'Likes'%>
-                            <% end %>
-                          <% else %>
-                            <%= link_to post_comment_likes_path(@post, comment, @like), method: :post, class: "level-item" do %>
-                              <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
-                              <%= comment.likes.count %> <%= (comment.likes.count) == 1 ? 'Like' : 'Likes'%>
-                            <% end %>
-                          <% end %>
-                          <a class="level-item">Reply</a>
-                          <div class="level-item"><%= time_ago_in_words(comment.created_at) %> ago</div>
-                        </div>
-                      </nav>
-                    </small>
-                  </div>
-                  <% if current_user == comment.user %>
-                    <div class="level-right small-gap">
-                      <%= link_to edit_post_comment_path(@post, comment) , class: "level-item" do %>
-                        <span class="icon"><i class="fa fa-pencil-alt" aria-hidden="true"></i></span>
-                      <% end %>
-                      <%= link_to [@post, comment], method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } do %>
-                        <span class="icon"><i class="far fa-trash-alt" aria-hidden="true"></i></span>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </article>
-              <% end %>
-            </div>
-          <% end %>
+          <%= render 'comments', post: @post %>
         </div>
 			</div>
 		</div>
