@@ -6,13 +6,13 @@
   </div>
   <div class="media-content">
     <div class="content">
-      <%= simple_form_for([ @post, @comment ], defaults: { required: false }) do |f| %>
+      <%= simple_form_for([ post, @comment ], defaults: { required: false }) do |f| %>
         <%= f.error_notification %>
         <%= f.hidden_field :user_id, value: current_user.id %>
         
         <div class="field has-addons">
           <div class="control is-expanded">
-            <%= f.input :content, input_html: { class: "input" }, wrapper: false, placeholder: "Write a comment...", label: false %>
+            <%= f.input :content, input_html: { class: "input" }, wrapper: false, placeholder: "Write a comment...", label: false, autofocus: true %>
           </div>
           <div class="control">
             <%= f.submit ">", class: "button is-info" %>
