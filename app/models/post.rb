@@ -6,4 +6,8 @@ class Post < ApplicationRecord
 
   # - VALIDATIONS
   validates :body, presence: true
+
+  def user_likes(user)
+    likes.find { |like| like.user_id == user.id }
+  end
 end

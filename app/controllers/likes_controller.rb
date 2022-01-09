@@ -1,23 +1,20 @@
 class LikesController < ApplicationController
   before_action :set_post
-  before_action :set_like, only: [:destroy]
+  before_action :set_like, only: %i[ destroy ]
 
   def create
-    if already_liked?
-      flash[:notice] = "You can't like more than once"
-    else
-      @post.likes.create(user_id: current_user.id)
-    end
+    @like = @post.likes.create(user_id: current_user.id)
+
     redirect_to post_path(@post)
   end
 
   def destroy
-    if !(already_liked?)
-      flash[:notice] = "Cannot unlike"
-    else
-      @like.destroy
+    @like.destroy
+
+    respond_to do |format|
+      format.html { redirect_to post_path(@post) }
+      format.json { head :no_content }
     end
-    redirect_to post_path(@post)
   end
 
   private
@@ -27,10 +24,6 @@ class LikesController < ApplicationController
   end
 
   def set_like
-    @like = @post.likes.find(params[:id])
-  end
-
-  def already_liked?
-    Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?
+    @like = Like.find(params[:id])
   end
 end

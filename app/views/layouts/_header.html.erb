@@ -3,7 +3,7 @@
     <%= link_to root_path, class: "navbar-item logo" do %>
       <%= image_tag "white-logo.png", alt: "Eventive logo" %>&nbsp;
     <% end %>
-    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+    <div class="navbar-burger" aria-label="menu">
       <span></span>
       <span></span>
       <span></span>
@@ -14,41 +14,22 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped">
-          <% if user_signed_in? %>
-            <p class="control">
-              <%= link_to current_user, class: "button is-primary" do %>
-                <span class="icon">
-                  <i class="fas fa-user"></i>
-                </span>
-                <span>u/<%= current_user.name %></span>
-              <% end %>
-            </p>
-            <p class="control">
-              <%= link_to destroy_user_session_path, method: :delete, class: "button is-primary" do %>
-                <span class="icon">
-                  <i class="fas fa-sign-out-alt"></i>
-                </span>
-                <span>Logout</span>
-              <% end %>
-            </p>
-          <% else %>
-            <p class="control">
-              <%= link_to new_user_registration_path, class: "button is-info is-inverted" do %>
-                <span class="icon">
-                  <i class="fas fa-user-plus"></i>
-                </span>
-                <span>Sign up</span>
-              <% end %>
-            </p>
-            <p class="control">
-              <%= link_to new_user_session_path, class: "button is-primary" do %>
-                <span class="icon">
-                  <i class="fas fa-sign-in-alt"></i>
-                </span>
-                <span>Sign in</span>
-              <% end %>
-            </p>
-          <% end %>
+          <p class="control">
+            <%= link_to current_user, class: "button is-primary" do %>
+              <span class="icon">
+                <i class="fas fa-user"></i>
+              </span>
+              <span><%= current_user.name %></span>
+            <% end %>
+          </p>
+          <p class="control">
+            <%= link_to destroy_user_session_path, method: :delete, class: "button is-primary" do %>
+              <span class="icon">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <span>Logout</span>
+            <% end %>
+          </p>
         </div>
       </div>
     </div>

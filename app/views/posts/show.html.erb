@@ -49,10 +49,17 @@
           <div class="tabs is-toggle is-fullwidth">
             <ul>
               <li>
-                <a>
-                  <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
-                  <span>Like</span>
-                </a>
+                <% if @post.user_likes(current_user) %>
+                  <%= link_to [@post, @post.user_likes(current_user)], method: :delete, class: "level-item" do %>
+                    <span class="icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
+                    <span>Unlike</span>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(@post, @like), method: :post, class: "level-item" do %>
+                    <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span>Like</span>
+                  <% end %>
+                <% end %>
               </li>
               <li>
                 <a>
@@ -81,7 +88,11 @@
                         <br>
                         <%= comment.content %>
                         <br>
-                        <small><a>Like</a> · <a>Reply</a> · <%= time_ago_in_words(comment.created_at) %> ago</small>
+                        <small>
+                          <a>Like</a> ·
+                          <a>Reply</a> · 
+                          <%= time_ago_in_words(comment.created_at) %> ago
+                        </small>
                       </p>
                     </div>
                   </div>
