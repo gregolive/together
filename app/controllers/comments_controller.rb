@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ destroy edit update ]
   before_action :set_post
 
+  def new
+    @comment = @post.comments.new(parent_id: params[:parent_id])
+  end
+
   def create
     @comment = @post.comments.create(comment_params)
 
@@ -51,6 +55,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id)
+    params.require(:comment).permit(:content, :user_id, :parent_id)
   end
 end

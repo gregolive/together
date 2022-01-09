@@ -1,6 +1,6 @@
 <% if @post.comments.any? %>
   <div class="post-comments">
-    <% @post.comments.each do |comment| %>
+    <% @post_comments.each do |comment| %>
       <article class="media">
         <figure class="media-left">
           <p class="image is-32x32">
@@ -16,6 +16,7 @@
               <br>
             </p>
           </div>
+
           <small>
             <nav class="level is-mobile">
               <div class="level-left">
@@ -30,12 +31,25 @@
                     <%= comment.likes.count %> <%= (comment.likes.count) == 1 ? 'Like' : 'Likes'%>
                   <% end %>
                 <% end %>
-                <a class="level-item">Reply</a>
-                <div class="level-item"><%= time_ago_in_words(comment.created_at) %> ago</div>
+                <%= link_to 'Reply', new_post_comment_path(@post, parent_id: comment.id), remote: true, class: "level-item" %>
+                <div class="level-item">
+                  <% if comment.created_at > 1.day.ago %>
+                    <%= time_ago_in_words(comment.created_at) %> ago
+                  <% else %>
+                    <%= comment.created_at.strftime("%b %d at %H:%M %p") %>
+                  <% end %>
+                </div>
               </div>
             </nav>
           </small>
+
+          <div id="reply-form-<%= comment.id %>"></div>
+
+          <% if comment.replies.any? %>
+            <%= render 'comment_replies', comment: comment %>
+          <% end %>
         </div>
+
         <% if current_user == comment.user %>
           <div class="level-right small-gap">
             <%= link_to edit_post_comment_path(@post, comment) , class: "level-item" do %>
@@ -47,9 +61,6 @@
           </div>
         <% end %>
       </article>
-      <% if comment.replies.any? %>
-
-      <% end %>
     <% end %>
   </div>
 <% end %>

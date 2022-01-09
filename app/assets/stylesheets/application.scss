@@ -86,3 +86,8 @@ input[type="radio"], input[type="checkbox"] {
 .post-comments {
   padding-top: 2em;
 }
+
+// add margin above nested comments
+.media .media {
+  margin-top: 1rem;
+}

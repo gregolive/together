@@ -1,0 +1,45 @@
+<% comment.replies.each do |reply| %>
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-32x32">
+        <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= reply.user.name %></strong>
+          <br>
+            <%= reply.content %>
+          <br>
+        </p>
+      </div>
+
+      <small>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <% if reply.user_likes(current_user) %>
+              <%= link_to [@post, reply, reply.user_likes(current_user)], method: :delete, class: "level-item" do %>
+                <span class="icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
+                <%= reply.likes.count %> <%= (reply.likes.count) == 1 ? 'Like' : 'Likes'%>
+              <% end %>
+            <% else %>
+              <%= link_to post_comment_likes_path(@post, reply, @like), method: :post, class: "level-item" do %>
+                <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                <%= reply.likes.count %> <%= (reply.likes.count) == 1 ? 'Like' : 'Likes'%>
+              <% end %>
+            <% end %>
+
+            <div class="level-item">
+              <% if reply.created_at > 1.day.ago %>
+                <%= time_ago_in_words(reply.created_at) %> ago
+              <% else %>
+                <%= reply.created_at.strftime("%b %d at %H:%M %p") %>
+              <% end %>
+            </div>
+          </div>
+        </nav>
+      </small>
+    </div>
+  </article>
+<% end %>

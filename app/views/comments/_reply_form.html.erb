@@ -1,0 +1,24 @@
+<article class="media">
+  <div class="media-left">
+    <p class="image is-32x32">
+      <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+    </p>
+  </div>
+  <div class="media-content">
+    <div class="content">
+      <%= simple_form_for([ @post, comment ], defaults: { required: false }) do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :parent_id, value: comment.parent_id %>
+        
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <%= f.input :content, input_html: { class: "input" }, wrapper: false, placeholder: "Write a comment...", label: false, autofocus: true %>
+          </div>
+          <div class="control">
+            <%= f.submit ">", class: "button is-info" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</article>
