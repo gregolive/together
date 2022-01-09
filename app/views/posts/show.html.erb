@@ -88,13 +88,27 @@
                         <br>
                         <%= comment.content %>
                         <br>
-                        <small>
-                          <a>Like</a> ·
-                          <a>Reply</a> · 
-                          <%= time_ago_in_words(comment.created_at) %> ago
-                        </small>
                       </p>
                     </div>
+                    <small>
+                      <nav class="level is-mobile">
+                        <div class="level-left">
+                          <% if comment.user_likes(current_user) %>
+                            <%= link_to [@post, comment, comment.user_likes(current_user)], method: :delete, class: "level-item" do %>
+                              <span class="icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
+                              <%= comment.likes.count %> <%= (comment.likes.count) == 1 ? 'Like' : 'Likes'%>
+                            <% end %>
+                          <% else %>
+                            <%= link_to post_comment_likes_path(@post, comment, @like), method: :post, class: "level-item" do %>
+                              <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                              <%= comment.likes.count %> <%= (comment.likes.count) == 1 ? 'Like' : 'Likes'%>
+                            <% end %>
+                          <% end %>
+                          <a class="level-item">Reply</a>
+                          <div class="level-item"><%= time_ago_in_words(comment.created_at) %> ago</div>
+                        </div>
+                      </nav>
+                    </small>
                   </div>
                   <% if current_user == comment.user %>
                     <div class="level-right small-gap">
