@@ -19,12 +19,12 @@
         <nav class="level is-mobile">
           <div class="level-left">
             <% if reply.user_likes(current_user) %>
-              <%= link_to [@post, reply, reply.user_likes(current_user)], method: :delete, class: "level-item" do %>
+              <%= link_to [post, reply, reply.user_likes(current_user)], method: :delete, class: "level-item" do %>
                 <span class="icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
                 <%= reply.likes.count %> <%= (reply.likes.count) == 1 ? 'Like' : 'Likes'%>
               <% end %>
             <% else %>
-              <%= link_to post_comment_likes_path(@post, reply, @like), method: :post, class: "level-item" do %>
+              <%= link_to post_comment_likes_path(post, reply, @like), method: :post, class: "level-item" do %>
                 <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
                 <%= reply.likes.count %> <%= (reply.likes.count) == 1 ? 'Like' : 'Likes'%>
               <% end %>
