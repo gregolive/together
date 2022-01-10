@@ -23,7 +23,15 @@
             <% end %>
           </p>
           <p class="control">
-            <%= link_to destroy_user_session_path, method: :delete, class: "button is-primary" do %>
+            <%= link_to users_path, class: "button is-primary" do %>
+              <span class="icon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+              <span>Add friends</span>
+            <% end %>
+          </p>
+          <p class="control">
+            <%= link_to destroy_user_session_path, method: :delete, class: "button is-inverted" do %>
               <span class="icon">
                 <i class="fas fa-sign-out-alt"></i>
               </span>

@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # - RELATIONS
+  has_many :friendships
+  has_many :friends, through: :friendships
   has_many :posts
   has_many :comments
   has_many :liked_posts, through: :likes, source: :post

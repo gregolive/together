@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <article class="panel is-primary">
+          <p class="panel-heading">
+            Add friends
+          </p>
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input class="input is-primary" type="text" placeholder="Search">
+              <span class="icon is-left">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+            </p>
+          </div>
+          <% if @users.any? %>
+            <% @users.each do |user| %>
+              <%= link_to friendships_path(friend_id: user), method: :post, class:"panel-block" do %>
+                <span class="panel-icon">
+                  <i class="fas fa-user-plus" aria-hidden="true"></i>
+                </span>
+                <%= user.name %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="panel-block">
+              <span class="panel-icon">
+                  <i class="fas fa-heart-broken" aria-hidden="true"></i>
+                </span>
+              No users found...
+            </div>
+          <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
