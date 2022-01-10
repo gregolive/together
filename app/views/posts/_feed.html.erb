@@ -15,7 +15,7 @@
       <div class="box">
         <%= render 'post_info', post: post %>
         <% if post.comments.any? %>
-          <%= render 'single_comment', post: post, comment: post.comments.where(parent_id: nil).last, index: true %>
+          <%= render 'comments/single_comment', post: post, comment: post.comments.where(parent_id: nil).last, index: true %>
         <% end %>
       </div>
     <% end %>

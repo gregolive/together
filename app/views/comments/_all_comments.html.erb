@@ -1,7 +1,7 @@
 <% if @post.comments.any? %>
   <div class="post-comments">
     <% @post_comments.each do |comment| %>
-      <%= render 'single_comment', post: @post, comment: comment, index: nil %>
+      <%= render 'comments/single_comment', post: @post, comment: comment, index: nil %>
     <% end %>
   </div>
 <% end %>
