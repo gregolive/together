@@ -2,6 +2,9 @@
   <div class="container">
     <div class="columns is-centered">
       <%= render 'feed' %>
+      <% if @friend_requests.any? %>
+        <%= render 'users/friend_requests' %>
+      <% end %>
     </div>
   </div>
 </section>

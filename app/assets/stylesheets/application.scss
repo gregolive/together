@@ -91,3 +91,13 @@ input[type="radio"], input[type="checkbox"] {
 .media .media {
   margin-top: 1rem;
 }
+
+/****** POSTS ******/
+
+// add space between users name and add friend icon
+.panel-icon.spaced {
+  padding-left: 0.5em;
+}
+.icon-text.spaced {
+  padding-left: 1.5em;
+}

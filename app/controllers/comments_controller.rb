@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ destroy edit update ]
+  before_action :set_comment, only: %i[ edit update ]
   before_action :set_post
 
   def new
@@ -36,6 +36,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = current_user.comments.find(params[:id])
     @comment.destroy
 
     respond_to do |format|

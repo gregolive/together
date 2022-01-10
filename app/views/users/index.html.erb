@@ -18,9 +18,18 @@
             <% @users.each do |user| %>
               <%= link_to friendships_path(friend_id: user), method: :post, class:"panel-block" do %>
                 <span class="panel-icon">
-                  <i class="fas fa-user-plus" aria-hidden="true"></i>
+                  <figure class="image is-16x16">
+                    <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+                  </figure>
                 </span>
                 <%= user.name %>
+                
+                <span class="icon-text spaced has-text-info">
+                  <span class="icon">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                  </span>
+                  <span>Add friend</span>
+                </span>
               <% end %>
             <% end %>
           <% else %>

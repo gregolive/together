@@ -1,0 +1,22 @@
+<div class="column is-one-quarter">
+  <article class="panel is-primary">
+    <p class="panel-heading">
+      Friend Requests
+    </p>
+    
+    <% for user in @friend_requests %>
+      <a class="panel-block">
+        <span class="panel-icon">
+          <figure class="image is-16x16">
+            <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+          </figure>
+        </span>
+        <%= user.name %>
+        <span class="panel-icon spaced">
+          <i class="fas fa-user-check" aria-hidden="true"></i>
+        </span>
+      </a>
+    <% end %>
+  </article>
+</div>
+

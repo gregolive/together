@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show edit update ]
   before_action :new_like_comment, only: %i[ show index ]
 
   # GET /posts or /posts.json
   def index
     @posts = Post.all.order('created_at DESC')
     @post = Post.new
+    @users = User.where('id != ?', current_user.id)
+    @friend_requests = current_user.received_friends
   end
 
   # GET /posts/1 or /posts/1.json
@@ -52,6 +54,7 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
+    @post = current_user.posts.find(params[:id])
     @post.destroy
 
     respond_to do |format|
