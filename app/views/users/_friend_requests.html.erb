@@ -1,7 +1,7 @@
 <div class="column is-one-quarter">
   <article class="panel is-primary">
     <p class="panel-heading">
-      Friend Requests
+      New Friend Requests
     </p>
     
     <% for user in @friend_requests %>
@@ -19,7 +19,7 @@
           <% end %>
         </span>
         <span class="panel-icon spaced has-text-danger">
-          <%= link_to friendship_path(user), method: :delete, class: "has-text-danger" do %>
+          <%= link_to user.friendship_request(current_user), method: :delete, class: "has-text-danger" do %>
             <i class="fas fa-user-times" aria-hidden="true"></i>
           <% end %>
         </span>

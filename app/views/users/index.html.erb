@@ -38,7 +38,7 @@
                     </span>
                     <span>Accept request</span>
                   <% end %>
-                  <%= link_to friendship_path(id: user.id), method: :delete, class:"icon-text spaced has-text-danger" do %>
+                  <%= link_to user.friendship_request(current_user), method: :delete, class:"icon-text spaced has-text-danger" do %>
                     <span class="icon">
                       <i class="fas fa-user-minus" aria-hidden="true"></i>
                     </span>

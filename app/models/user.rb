@@ -25,4 +25,8 @@ class User < ApplicationRecord
     received_friends.select { |received_friend| received_friend.friends.include?(self) }
                     .reject { |received_friend| friends.include?(received_friend) }
   end
+
+  def friendship_request(user)
+    friendships.select { |friendships| friendships.friend == user }
+  end
 end
