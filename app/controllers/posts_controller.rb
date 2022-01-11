@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order('created_at DESC')
     @post = Post.new
     @users = User.where('id != ?', current_user.id)
-    @friend_requests = current_user.received_friends
+    @friend_requests = current_user.incoming_friend_requests
   end
 
   # GET /posts/1 or /posts/1.json

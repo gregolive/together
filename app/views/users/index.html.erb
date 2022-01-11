@@ -16,21 +16,50 @@
           </div>
           <% if @users.any? %>
             <% @users.each do |user| %>
-              <%= link_to friendships_path(friend_id: user), method: :post, class:"panel-block" do %>
+              <div class="panel-block">
                 <span class="panel-icon">
                   <figure class="image is-16x16">
                     <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
                   </figure>
                 </span>
                 <%= user.name %>
-                
-                <span class="icon-text spaced has-text-info">
-                  <span class="icon">
-                    <i class="fas fa-user-plus" aria-hidden="true"></i>
-                  </span>
-                  <span>Add friend</span>
-                </span>
-              <% end %>
+
+                <% if current_user.active_friends.include?(user) %>
+                  <div class="icon-text spaced has-text-success">
+                    <span class="icon">
+                      <i class="fas fa-user-check" aria-hidden="true"></i>
+                    </span>
+                    <span>Your friend</span>
+                  </div>
+                <% elsif current_user.incoming_friend_requests.include?(user) %>
+                  <%= link_to friendships_path(friend_id: user), method: :post, class:"icon-text spaced has-text-primary" do %>
+                    <span class="icon">
+                      <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    </span>
+                    <span>Accept request</span>
+                  <% end %>
+                  <%= link_to friendship_path(id: user.id), method: :delete, class:"icon-text spaced has-text-danger" do %>
+                    <span class="icon">
+                      <i class="fas fa-user-minus" aria-hidden="true"></i>
+                    </span>
+                    <span>Decline request</span>
+                  <% end %>
+                <% elsif current_user.pending_friend_requests.include?(user) %>
+                  <div class="icon-text spaced has-text-warning">
+                    <span class="icon">
+                      <i class="fas fa-user-clock" aria-hidden="true"></i>
+                    </span>
+                    <span>Friend request pending</span>
+                  </div>
+                <% else %>
+                  <%= link_to friendships_path(friend_id: user), method: :post, class:"icon-text spaced has-text-primary" do %>
+                    <span class="icon">
+                      <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    </span>
+                    <span>Add friend</span>
+                  <% end %>
+                <% end %>
+              </div>
             <% end %>
           <% else %>
             <div class="panel-block">

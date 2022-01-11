@@ -2,6 +2,7 @@
 $primary: #374EFB;
 $link: #374EFB;
 $info: #374EFB;
+$warning: #ff6e61; //7383FC
 
 @import "bulma";
 
@@ -95,9 +96,6 @@ input[type="radio"], input[type="checkbox"] {
 /****** POSTS ******/
 
 // add space between users name and add friend icon
-.panel-icon.spaced {
-  padding-left: 0.5em;
-}
-.icon-text.spaced {
+.panel-icon.spaced, .icon-text.spaced {
   padding-left: 1.5em;
 }

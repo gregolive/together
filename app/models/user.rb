@@ -12,4 +12,17 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :likes
+
+  def active_friends
+    friends.select { |friend| friend.friends.include?(self) }
+  end
+
+  def pending_friend_requests
+    friends.reject { |friend| friend.friends.include?(self) }
+  end
+
+  def incoming_friend_requests
+    received_friends.select { |received_friend| received_friend.friends.include?(self) }
+                    .reject { |received_friend| friends.include?(received_friend) }
+  end
 end

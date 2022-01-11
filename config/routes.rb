@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :users, only: %i[show index]
-  resources :friendships
+  resources :friendships, only: %i[create destroy]
   resources :posts do
     resources :comments, only: %i[new create edit update destroy] do
       resources :likes, only: %i[create destroy]

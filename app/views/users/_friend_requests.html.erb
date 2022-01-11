@@ -5,17 +5,25 @@
     </p>
     
     <% for user in @friend_requests %>
-      <a class="panel-block">
+      <div class="panel-block">
         <span class="panel-icon">
           <figure class="image is-16x16">
             <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
           </figure>
         </span>
         <%= user.name %>
+
         <span class="panel-icon spaced">
-          <i class="fas fa-user-check" aria-hidden="true"></i>
+          <%= link_to friendships_path(friend_id: user), method: :post do %>
+            <i class="fas fa-user-check" aria-hidden="true"></i>
+          <% end %>
         </span>
-      </a>
+        <span class="panel-icon spaced has-text-danger">
+          <%= link_to friendship_path(user), method: :delete, class: "has-text-danger" do %>
+            <i class="fas fa-user-times" aria-hidden="true"></i>
+          <% end %>
+        </span>
+      </div>
     <% end %>
   </article>
 </div>
