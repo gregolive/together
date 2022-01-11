@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def friendship_request(user)
     friendships.select { |friendships| friendships.friend == user }
   end
+
+  def friends_posts
+    active_friends.select(&:posts)
+  end
 end

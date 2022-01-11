@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = Post.feed_posts(current_user)
     @post = Post.new
-    @users = User.where('id != ?', current_user.id)
+    # @users = User.where('id != ?', current_user.id)
     @friend_requests = current_user.incoming_friend_requests
   end
 
