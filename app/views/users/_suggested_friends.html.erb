@@ -1,0 +1,31 @@
+<article class="panel is-primary">
+  <p class="panel-heading">
+    Friend Suggestions
+  </p>
+  
+  <% if @friend_suggestions.any? %>
+    <% for user in @friend_suggestions %>
+      <div class="panel-block">
+        <span class="panel-icon">
+          <figure class="image is-16x16">
+            <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+          </figure>
+        </span>
+        <%= user.name %>
+
+        <span class="panel-icon spaced">
+          <%= link_to friendships_path(friend_id: user), method: :post do %>
+            <i class="fas fa-user-plus" aria-hidden="true"></i>
+          <% end %>
+        </span>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="panel-block icon-text">
+      <span class="icon">
+        <i class="fas fa-heart-broken"></i>
+      </span>
+      <span>None found...</span>
+    </div>
+  <% end %>
+</article>

@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     @post = Post.new
     # @users = User.where('id != ?', current_user.id)
     @friend_requests = current_user.incoming_friend_requests
+    @friend_suggestions = current_user.suggested_friends
   end
 
   # GET /posts/1 or /posts/1.json

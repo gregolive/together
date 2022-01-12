@@ -1,30 +1,27 @@
-<div class="column is-one-quarter">
-  <article class="panel is-primary">
-    <p class="panel-heading">
-      New Friend Requests
-    </p>
-    
-    <% for user in @friend_requests %>
-      <div class="panel-block">
-        <span class="panel-icon">
-          <figure class="image is-16x16">
-            <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
-          </figure>
-        </span>
-        <%= user.name %>
+<article class="panel is-warning">
+  <p class="panel-heading">
+    New Friend Requests
+  </p>
+  
+  <% for user in @friend_requests %>
+    <div class="panel-block">
+      <span class="panel-icon">
+        <figure class="image is-16x16">
+          <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+        </figure>
+      </span>
+      <%= user.name %>
 
-        <span class="panel-icon spaced">
-          <%= link_to friendships_path(friend_id: user), method: :post do %>
-            <i class="fas fa-user-check" aria-hidden="true"></i>
-          <% end %>
-        </span>
-        <span class="panel-icon spaced has-text-danger">
-          <%= link_to user.friendship_request(current_user), method: :delete, class: "has-text-danger" do %>
-            <i class="fas fa-user-times" aria-hidden="true"></i>
-          <% end %>
-        </span>
-      </div>
-    <% end %>
-  </article>
-</div>
-
+      <span class="panel-icon spaced">
+        <%= link_to friendships_path(friend_id: user), method: :post do %>
+          <i class="fas fa-user-check" aria-hidden="true"></i>
+        <% end %>
+      </span>
+      <span class="panel-icon spaced has-text-danger">
+        <%= link_to user.friendship_request(current_user), method: :delete, class: "has-text-danger" do %>
+          <i class="fas fa-user-times" aria-hidden="true"></i>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+</article>

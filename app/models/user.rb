@@ -37,4 +37,11 @@ class User < ApplicationRecord
   def mutual_friends(user)
     friends.select { |friend| friend.active_friends.include?(user) }
   end
+
+  def suggested_friends
+    User.all.reject { |user| active_friends.include?(user) }
+        .reject { |user| pending_friend_requests.include?(user) }
+        .reject { |user| incoming_friend_requests.include?(user) }
+        .reject { |user| user == self }
+  end
 end
