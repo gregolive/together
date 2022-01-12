@@ -11,7 +11,9 @@
             <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
           </figure>
         </span>
-        <%= user.name %>
+        <%= link_to user, class: "has-text-black" do %>
+          <%= user.name %>
+        <% end %>
 
         <span class="panel-icon spaced">
           <%= link_to friendships_path(friend_id: user), method: :post do %>

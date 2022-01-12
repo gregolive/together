@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @like = Like.new
     @friend_requests = current_user.incoming_friend_requests
+    @friend_suggestions = current_user.suggested_friends
   end
 
   def index

@@ -3,8 +3,8 @@
     <div class="columns is-centered">
       <%= render 'feed' %>
       <div class="column is-one-quarter">
-        <%= render 'users/friend_requests' %>
-        <%= render 'users/suggested_friends' if @friend_requests.any? %>
+        <%= render 'users/friend_requests' if @friend_requests.any? %>
+        <%= render 'users/suggested_friends' %>
       </div>
     </div>
   </div>
