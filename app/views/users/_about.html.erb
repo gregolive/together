@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="card-image">
+    <figure class="banner-image">
+      <img src="/assets/DT<%= ["1", "2", "3", "4", "5"].sample %>.jpg" alt="user banner image">
+    </figure>
+  </div>
+  <div class="card-content centered">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-96x96">
+          <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <h2 class="title is-3"><%= @user.name %></h2>
+        <p class="subtitle is-6">
+          <%= friends = @user.active_friends.count %> <%= friends == 1 ? 'friend' : 'friends'%>
+          <% unless @user == current_user %>
+            <%= mutual_friends = @user.mutual_friends(current_user).count %> <%= mutual_friends == 1 ? 'mutual friend' : 'mutual friends'%>
+            
+            <% if current_user.active_friends.include?(@user) %>
+              <div class="subtitle is-6 has-text-success">
+                <span class="icon">
+                  <i class="fas fa-user-check" aria-hidden="true"></i>
+                </span>
+                <span>Your friend</span>
+              </div>
+            <% elsif current_user.pending_friend_requests.include?(@user) %>
+              <div class="subtitle is-6 has-text-warning">
+                <span class="icon">
+                  <i class="fas fa-user-clock" aria-hidden="true"></i>
+                </span>
+                <span>Friend request pending</span>
+              </div>
+            <% elsif current_user.incoming_friend_requests.include?(@user) %>
+              <p class="subtitle is-6">
+                <%= link_to friendships_path(friend_id: @user), method: :post, class:"subtitle is-6 has-text-primary" do %>
+                  <span class="icon">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                  </span>
+                  <span>Accept request</span>
+                <% end %>
+                <%= link_to @user.friendship_request(current_user), method: :delete, class:"subtitle is-6 has-text-danger" do %>
+                  <span class="icon">
+                    <i class="fas fa-user-minus" aria-hidden="true"></i>
+                  </span>
+                  <span>Decline request</span>
+                <% end %>
+              </p>
+            <% else %>
+              <p class="subtitle is-6">
+                <%= link_to friendships_path(friend_id: @user), method: :post, class:"subtitle is-6 has-text-primary" do %>
+                  <span class="icon">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                  </span>
+                  <span>Add friend</span>
+                <% end %>
+              </p>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

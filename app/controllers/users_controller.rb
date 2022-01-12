@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
+    @post = Post.new
+    @comment = Comment.new
+    @like = Like.new
+    @friend_requests = current_user.incoming_friend_requests
   end
 
   def index

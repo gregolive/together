@@ -1,0 +1,13 @@
+<%= render 'about' %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <%= render @user == current_user ? 'posts/feed' : 'user_feed' %>
+      <% if current_user == @user %>
+        <% if @friend_requests.any? %>
+          <%= render 'users/friend_requests' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

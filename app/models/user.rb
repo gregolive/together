@@ -33,4 +33,8 @@ class User < ApplicationRecord
   def friends_posts
     active_friends.select(&:posts)
   end
+
+  def mutual_friends(user)
+    friends.select { |friend| friend.active_friends.include?(user) }
+  end
 end

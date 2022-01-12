@@ -23,11 +23,20 @@
             <% end %>
           </p>
           <p class="control">
-            <%= link_to users_path, class: "button is-primary" do %>
-              <span class="icon">
-                <i class="fas fa-user-plus"></i>
-              </span>
-              <span>Add friends</span>
+            <% if @friend_requests.any? %>
+              <%= link_to users_path, class: "button is-warning" do %>
+                <span class="icon">
+                  <i class="fas fa-user-plus"></i>
+                </span>
+                <span>Add friends</span>
+              <% end %>
+            <% else %>
+              <%= link_to users_path, class: "button is-primary" do %>
+                <span class="icon">
+                  <i class="fas fa-user-plus"></i>
+                </span>
+                <span>Add friends</span>
+              <% end %>
             <% end %>
           </p>
           <p class="control">

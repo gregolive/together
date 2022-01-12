@@ -6,14 +6,14 @@
       </p>
     </figure>
     <div class="media-content">
-      <%= render 'form' %>
+      <%= render 'posts/form' %>
     </div>
   </article>
 
   <% if @posts.any? %>
     <% @posts.each do |post| %>
       <div class="box">
-        <%= render 'post_info', post: post %>
+        <%= render 'posts/post_info', post: post %>
         <% if post.comments.any? %>
           <%= render 'comments/single_comment', post: post, comment: post.comments.where(parent_id: nil).last, index: true %>
         <% end %>
@@ -21,7 +21,7 @@
     <% end %>
   <% else %>
     <div class="box">
-      Such empty... Make a post now from above or <%= link_to "add more friends!", users_path %>
+      Such empty... 😿 Make a post now from above or <%= link_to "add more friends!", users_path %>
     </div>
   <% end %>
 </div>

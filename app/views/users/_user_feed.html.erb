@@ -1,0 +1,16 @@
+<div class="column is-half">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="box">
+        <%= render 'posts/post_info', post: post %>
+        <% if post.comments.any? %>
+          <%= render 'comments/single_comment', post: post, comment: post.comments.where(parent_id: nil).last, index: true %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="box no-posts">
+      Such empty... 😿 <%= @user.name %> hasn't made any posts yet.
+    </div>
+  <% end %>
+</div>

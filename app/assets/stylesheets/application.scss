@@ -102,7 +102,31 @@ input[type="radio"], input[type="checkbox"] {
 
 /****** USERS ******/
 
-// add space between users name and add friend icon
-.panel-icon.spaced, .icon-text.spaced {
+// add space between users name and add friend icon and between accept and delete friendship buttons
+.panel-icon.spaced, .icon-text.spaced, .subtitle.is-6.has-text-danger {
   padding-left: 1.5em;
+}
+
+// no rounding on banner image
+.card-image:first-child img {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+// size banner image
+.banner-image {
+  height: 35vh;
+  overflow: hidden;
+}
+
+// center profile name and info, and box of posts when no posts made
+.card-content.centered, .box.no-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// reduce padding below friend info and buttons on show page
+.subtitle.is-6 {
+  margin-bottom: 0.5em;
 }
