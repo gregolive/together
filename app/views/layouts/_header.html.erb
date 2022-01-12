@@ -16,10 +16,10 @@
         <div class="field is-grouped">
           <p class="control">
             <%= link_to current_user, class: "button is-primary" do %>
-              <span class="icon">
-                <i class="fas fa-user"></i>
+              <span class="image is-24x24">
+                <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
               </span>
-              <span><%= current_user.name %></span>
+              <span class="user-name"><%= current_user.name %></span>
             <% end %>
           </p>
           <p class="control">

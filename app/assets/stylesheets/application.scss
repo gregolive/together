@@ -6,6 +6,13 @@ $warning: #ff6e61; //7383FC
 
 @import "bulma";
 
+/****** HEADER ******/
+
+// add spacing between profile picture and name
+.user-name {
+  padding-left: 0.5em;
+}
+
 /****** DEVISE ******/
 
 // remove gap between header and notifications
@@ -93,7 +100,7 @@ input[type="radio"], input[type="checkbox"] {
   margin-top: 1rem;
 }
 
-/****** POSTS ******/
+/****** USERS ******/
 
 // add space between users name and add friend icon
 .panel-icon.spaced, .icon-text.spaced {

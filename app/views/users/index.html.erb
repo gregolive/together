@@ -2,6 +2,35 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-half">
+        <% if @friend_requests.any? %>
+          <% @friend_requests.each do |friend| %>
+            <article class="panel is-warning">
+              <p class="panel-heading">
+                Friend requests
+              </p>
+              <div class="panel-block">
+                <span class="panel-icon">
+                  <figure class="image is-16x16">
+                    <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+                  </figure>
+                </span>
+                <%= friend.name %>
+                <%= link_to friendships_path(friend_id: friend), method: :post, class:"icon-text spaced has-text-primary" do %>
+                  <span class="icon">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                  </span>
+                  <span>Accept request</span>
+                <% end %>
+                <%= link_to friend.friendship_request(current_user), method: :delete, class:"icon-text spaced has-text-danger" do %>
+                  <span class="icon">
+                    <i class="fas fa-user-minus" aria-hidden="true"></i>
+                  </span>
+                  <span>Decline request</span>
+                <% end %>
+              </div>  
+            </article>
+          <% end %>
+        <% end %>
         <article class="panel is-primary">
           <p class="panel-heading">
             Add friends

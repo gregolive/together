@@ -5,5 +5,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where('id != ?', current_user.id)
+    @friend_requests = current_user.incoming_friend_requests
   end
 end
