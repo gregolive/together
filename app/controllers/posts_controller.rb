@@ -6,9 +6,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.feed_posts(current_user)
     @post = Post.new
-    # @users = User.where('id != ?', current_user.id)
     @friend_requests = current_user.incoming_friend_requests
     @friend_suggestions = current_user.suggested_friends
+    @top_posts = @posts.sort_by { |post| post.likes.count + post.comments.count }.take(5).reverse
   end
 
   # GET /posts/1 or /posts/1.json

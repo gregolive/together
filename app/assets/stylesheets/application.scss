@@ -130,3 +130,18 @@ input[type="radio"], input[type="checkbox"] {
 .subtitle.is-6 {
   margin-bottom: 0.5em;
 }
+
+// adjust spacing on top posts
+.panel-icon.posts {
+  padding: 0.5em;
+}
+.media.posts + .media.posts {
+  margin-top: 0;
+  padding-top: 0;
+}
+.media.posts {
+  padding: 0.5em;
+}
+.media-content.posts {
+  padding-left: 0.5em;
+}

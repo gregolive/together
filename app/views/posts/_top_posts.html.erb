@@ -1,0 +1,40 @@
+<div class="column is-one-quarter">
+  <article class="panel is-primary">
+    <p class="panel-heading">
+      Top Posts
+    </p>
+    
+    <% if @top_posts.any? %>
+      <% for post in @top_posts %>
+        <article class="media posts">
+          
+            <span class="panel-icon posts">
+              <i class="fas fa-newspaper"></i>
+            </span>
+          
+          <div class="media-content posts">
+            <div class="content">
+              <p>
+                <%= link_to post, class: "has-text-black" do %>
+                  <%= truncate post.body, length: 32 %>
+                <% end %>
+                <br>
+                <small>
+                  <%= likes = post.likes.count %> <%= likes == 1 ? 'like' : 'likes'%>
+                  <%= comments = post.comments.count %> <%= comments == 1 ? 'comment' : 'comments'%>
+                </small>
+              </p>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    <% else %>
+      <div class="panel-block icon-text">
+        <span class="icon">
+          <i class="fas fa-heart-broken"></i>
+        </span>
+        <span>No posts found...</span>
+      </div>
+    <% end %>
+  </article>
+</div>

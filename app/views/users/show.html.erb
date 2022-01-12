@@ -2,12 +2,16 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
+      <%= render 'posts/top_posts' %>
+
       <%= render @user == current_user ? 'posts/feed' : 'user_feed' %>
+      
       <div class="column is-one-quarter">
         <% if current_user == @user %>
           <%= render 'users/friend_requests' if @friend_requests.any? %>
           <%= render 'users/suggested_friends' %>
         <% end %>
+        <%= render 'friend_list' %>
       </div>
     </div>
   </div>

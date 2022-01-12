@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
 
   def mutual_friends(user)
-    friends.select { |friend| friend.active_friends.include?(user) }
+    friends.select { |friend| user.active_friends.include?(friend) }
   end
 
   def suggested_friends
@@ -43,5 +43,10 @@ class User < ApplicationRecord
         .reject { |user| pending_friend_requests.include?(user) }
         .reject { |user| incoming_friend_requests.include?(user) }
         .reject { |user| user == self }
+        .take(3)
+  end
+
+  def top_posts
+    posts.sort_by { |post| post.likes.count + post.comments.count }.take(5).reverse
   end
 end

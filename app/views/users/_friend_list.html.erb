@@ -1,0 +1,36 @@
+<article class="panel is-primary">
+  <p class="panel-heading">
+    Friends
+  </p>
+  
+  <% if @user.active_friends.any? %>
+    <% for friend in @user.active_friends %>
+      <div class="panel-block">
+        <span class="panel-icon">
+          <figure class="image is-16x16">
+            <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
+          </figure>
+        </span>
+        <%= link_to friend, class: "has-text-black" do %>
+          <%= friend.name %>
+          <span class="has-text-grey"><%= " (mutual)" if @user != current_user && current_user.active_friends.include?(friend) %></span>
+        <% end %>
+
+        <% if @user == current_user %>
+          <span class="panel-icon spaced has-text-danger">
+            <%= link_to friend.friendship_request(current_user), method: :delete, class: "has-text-danger" do %>
+              <i class="fas fa-user-times" aria-hidden="true"></i>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="panel-block icon-text">
+      <span class="icon">
+        <i class="fas fa-heart-broken"></i>
+      </span>
+      <span><%= @user.name %> has no friends...</span>
+    </div>
+  <% end %>
+</article>
