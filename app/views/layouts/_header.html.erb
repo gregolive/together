@@ -23,7 +23,7 @@
             <% end %>
           </p>
           <p class="control">
-            <% if @friend_requests.any? %>
+            <% if current_user.incoming_friend_requests.any? %>
               <%= link_to users_path, class: "button is-warning" do %>
                 <span class="icon">
                   <i class="fas fa-user-plus"></i>
