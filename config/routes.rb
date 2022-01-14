@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#index'
 
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
   resources :users, only: %i[show index]
   resources :friendships, only: %i[create destroy]
   resources :posts do
