@@ -52,6 +52,13 @@
             <% end %>
 
             Already have an account? <%= render "devise/shared/links" %>
+
+            <%= button_to user_facebook_omniauth_authorize_path, method: :post, class: "button facebook" do %>
+              <span class="icon">
+                <i class="fab fa-facebook"></i>
+              </span>
+              <span><strong>Continue with Facebook</strong></span>
+            <% end %>
           </div>
         </div>
       </div>
