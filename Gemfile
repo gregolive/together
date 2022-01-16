@@ -36,6 +36,10 @@ gem "figaro"
 # Facebook authentication
 gem 'omniauth'
 gem 'omniauth-facebook'
+# Gravatar
+gem 'gravatar_image_tag', '~> 1.2'
+# Image processing
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
