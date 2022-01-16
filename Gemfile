@@ -36,7 +36,6 @@ gem "figaro"
 # Facebook authentication
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem "omniauth-rails_csrf_protection"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -60,6 +59,8 @@ group :development do
   # Guard
   gem 'guard', '~> 2.18'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
+  # Letter opener
+  gem 'letter_opener', '~> 1.7'
 end
 
 group :test do
