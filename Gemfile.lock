@@ -322,7 +322,7 @@ DEPENDENCIES
   guard (~> 2.18)
   guard-livereload (~> 2.5, >= 2.5.2)
   jbuilder (~> 2.7)
-  letter_opener (~> 1.7)
+  letter_opener
   listen (~> 3.3)
   omniauth
   omniauth-facebook
