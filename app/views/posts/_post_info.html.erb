@@ -37,6 +37,10 @@
 
 <p class="post-body"><%= post.body %></p>
 
+<% if post.image.attached? %>
+  <%= image_tag post.image %>
+<% end %>
+
 <p class="post-info has-text-grey-dark"><small>
   <%= post_likes = post.likes.count %> <%= post_likes == 1 ? 'like' : 'likes'%> 
   <%= post_comments = post.comments.count %> <%= post_comments == 1 ? 'comment' : 'comments'%>

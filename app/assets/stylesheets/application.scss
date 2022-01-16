@@ -107,6 +107,12 @@ input[type="radio"], input[type="checkbox"] {
   margin-top: 1rem;
 }
 
+// line up post button with add image button
+.button.is-info.post {
+  margin-bottom: 0;
+  margin-left: 0.6em;
+}
+
 /****** USERS ******/
 
 // add space between users name and add friend icon and between accept and delete friendship buttons
