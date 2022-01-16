@@ -1,9 +1,9 @@
 <div class="column is-half">
   <article class="media box">
     <figure class="media-left">
-      <p class="image is-64x64">
-        <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
-      </p>
+      <figure class="image">
+        <%= image_tag user_avatar(current_user, 72), alt:"Profile picture", class:"is-rounded" %>
+      </figure>
     </figure>
     <div class="media-content">
       <%= render 'posts/form' %>

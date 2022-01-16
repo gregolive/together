@@ -1,9 +1,9 @@
 <% comment.replies.each do |reply| %>
   <article class="media">
     <figure class="media-left">
-      <p class="image is-32x32">
-        <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
-      </p>
+      <figure class="image">
+        <%= image_tag user_avatar(reply.user, 32), alt:"Profile picture", class:"is-rounded" %>
+      </figure>
     </figure>
     <div class="media-content">
       <div class="content">

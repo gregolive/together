@@ -1,8 +1,8 @@
 <article class="media">
   <div class="media-left">
-    <p class="image is-32x32">
-      <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
-    </p>
+    <figure class="image">
+      <%= image_tag user_avatar(current_user), alt:"Profile picture", class:"is-rounded" %>
+    </figure>
   </div>
   <div class="media-content">
     <div class="content">

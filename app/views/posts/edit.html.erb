@@ -5,9 +5,9 @@
         <h1 class="title">Edit Post</h1>
         <article class="media box">
           <figure class="media-left">
-            <p class="image is-64x64">
-              <%= image_tag "blank-profile-picture.jpg", alt: "Blank profile picture", class:"is-rounded" %>
-            </p>
+            <figure class="image">
+              <%= image_tag user_avatar(@post.user, 64), alt:"Profile picture", class:"is-rounded" %>
+            </figure>
           </figure>
           <div class="media-content">
             <%= render 'form', post: @post %>
