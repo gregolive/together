@@ -30,7 +30,7 @@ Avaliable via [Heroku](https://together-social.herokuapp.com/) 👈
   - A list of their current friends in the right column.
 
 ### 2) Friends:
-- User's can add friends via friend suggestions found on the homepage and their user page or via the "Add Friends" button in the navbar.
+- User's can add friends via friend suggestions found on the homepage and their user page or via the "Add friends" button in the navbar.
 - The add freinds page contains a list of all the users and their relation to the user with accompanying button(s)/information.
 - There are 4 possible relationships between 2 users:
   1. **Friend**: The users are frineds and this will be displayed in green text with a check mark.
@@ -40,6 +40,7 @@ Avaliable via [Heroku](https://together-social.herokuapp.com/) 👈
 
 ### 3) Styling:
 - HTML and CSS framework via Bulma rails gem.
+- Icons from Font Awesome.
 
 ### 4) User authentication:
 - Devise gem for account setup/management, authenticating user on app start up, etc.
@@ -47,8 +48,10 @@ Avaliable via [Heroku](https://together-social.herokuapp.com/) 👈
 - Figaro gem for creating API environment variables in gitignore.
 
 ### 5) Images and avatars:
-- In development to the local disk images and user avatars are saved to the local disk.
-- In production images are saved with AWS S3 cloud storage using the aws-sdk-s3 gem.
+- Users can add images to posts via the "Add photo" button in the post form.
+- The default avatar for a user is assigned as their email's gravatar image via the gravatar gem. A user with no gravatar images will have the gravatar logo as their avatar with this setup (unless they sign in via Facebook), but they can add an avatar from their edit profile page.
+- In development, images and uploaded user avatars are saved via Active Storage to the local disk.
+- In production, Active Storage is configured to save images with AWS S3 cloud storage using the aws-sdk-s3 gem.
 - Resizing images is done via the image_processing gem's variant method.
 
 ### 5) Mailer:
@@ -65,6 +68,7 @@ Add Javascript for:
 Other:
 - Search functionality for add friend page
 - Friend suggestions based on number of mutual friends
+- Users can add their own banner images
 
 ## Ruby version
 
