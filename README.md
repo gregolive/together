@@ -1,35 +1,35 @@
 # Together Social
 
-A social media app reminiscent of Facebook that allows users to add text/image posts and add friends. 
+A social media app reminiscent of Facebook that allows users to add text/image posts and add friends.
 
 ## Live demo
 
 Avaliable via [Heroku](https://together-social.herokuapp.com/) 👈
 
-Login with...
-
-user: <code>dhh</code>
-password: <code>secret</code>
-
 ## Features
 
-- RESTful design
-- CRUD operations for blog articles
-- Create & delete operations for comments
-- User authentication
+Styling:
+- HTML and CSS framework via Bulma rails gem 
 
-## What I learned
+User authentication:
+- Devise gem for account setup/management, authenticating user on app start up, etc.
+- Omniauth Facebook gem allows for sign-in via the facebook API and integration with Devise
+- Figaro gem for creating API environment variables in gitignore
 
-- How to start up the Puma web server built into Rails
-- Syntax for Rails generators and commonly used commands
-- Rails Active Record and database migration
-- Writing HTML with mixed in Ruby via ERB templating
-- Resouceful routing Rails features
-- How to refactor views with parials
-- How to simplify models with concerns
-- Built-in Rails model association methods
-- Implementing basic user authentication in Rails
-- Deployment to Heroku
+Images and avatars:
+- 
+- image_processing gem for resizing images
+
+Other:
+- simple_form gem
+
+
+
+## To do
+
+Add Javascript for:
+- Adding likes and comments without page refresh
+- Displaying uploading file names beside the Bulma upload button
 
 ## Ruby version
 
