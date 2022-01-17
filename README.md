@@ -1,24 +1,36 @@
-# README
+# Together Social
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A social media app reminiscent of Facebook that allows users to add text/image posts and add friends. 
 
-Things you may want to cover:
+## Live demo
 
-* Ruby version
+Avaliable via [Heroku](https://together-social.herokuapp.com/) 👈
 
-* System dependencies
+Login with...
 
-* Configuration
+user: <code>dhh</code>
+password: <code>secret</code>
 
-* Database creation
+## Features
 
-* Database initialization
+- RESTful design
+- CRUD operations for blog articles
+- Create & delete operations for comments
+- User authentication
 
-* How to run the test suite
+## What I learned
 
-* Services (job queues, cache servers, search engines, etc.)
+- How to start up the Puma web server built into Rails
+- Syntax for Rails generators and commonly used commands
+- Rails Active Record and database migration
+- Writing HTML with mixed in Ruby via ERB templating
+- Resouceful routing Rails features
+- How to refactor views with parials
+- How to simplify models with concerns
+- Built-in Rails model association methods
+- Implementing basic user authentication in Rails
+- Deployment to Heroku
 
-* Deployment instructions
+## Ruby version
 
-* ...
+2.7.4
