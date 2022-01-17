@@ -36,6 +36,7 @@ gem "figaro"
 # Facebook authentication
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 # Gravatar
 gem 'gravatar_image_tag', '~> 1.2'
 # Image processing
