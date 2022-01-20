@@ -57,7 +57,7 @@ Avaliable via [Heroku](https://together-social.herokuapp.com/) 👈
 ### 5) Mailer:
 - Upon signup a mailer is used to send a welcome email to the user and confirm their account creation. 
 - In development the letter_opener gem is used to view the mail.
-- In production...
+- In production the sendgrid-ruby gem and SendGrid addon on Heroku are used to send emails.
 
 ## To do
 
